@@ -19,7 +19,7 @@
       <option value="false">No</option>
     </select>
     <br><br>
-    <a id="dataInLink" href="https://plus.anz/datain">https://plus.anz/datain</a>
+    <a id="dataInLink" href="https://plus.anz/datain&success=true">https://plus.anz/datain&success=true</a>
 
     <script>
       function updateLink() {
@@ -30,8 +30,13 @@
 
         // Update link with user input and success value
         var link = document.getElementById("dataInLink");
-        link.href = "https://plus.anz/datain?consent-id=" + userInput + "&success=" + successValue;
-        link.innerHTML = "https://plus.anz/datain?consent-id=" + userInput + "&success=" + successValue;
+        if (userInput) {
+          link.href = "https://plus.anz/datain?consent-id=" + userInput + "&success=" + successValue;
+          link.innerHTML = "https://plus.anz/datain?consent-id=" + userInput + "&success=" + successValue;
+        } else {
+          link.href = "https://plus.anz/datain?success=" + successValue;
+          link.innerHTML = "https://plus.anz/datain?success=" + successValue;
+        }
       }
 
       // Add event listeners to update the link whenever the user makes a change
