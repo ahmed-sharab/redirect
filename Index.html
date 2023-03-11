@@ -4,7 +4,7 @@
     <title>redirect</title>
   </head>
   <body>
-    <label for="userInput">Enter your input:</label>
+    <label for="userInput">Enter consent ID</label>
     <input type="text" id="userInput" name="userInput">
     <br><br>
     <label for="successSelect">Did it succeed?</label>
@@ -26,7 +26,7 @@
 
         // Update link with user input and success value
         var link = document.getElementById("exampleLink");
-        link.href = "https://plus.anz/datain?contextId=" + userInput + "&success=" + successValue;
+        link.href = "https://plus.anz/datain?consent-id=" + userInput + "&success=" + successValue;
       }
     </script>
   </body>
