@@ -3,10 +3,29 @@
   <head>
     <title>redirect</title>
     <style>
-      body {
-        padding-top: 20px;
-        padding-left: 20px;
+      label {
+        display: inline-block;
+        width: 150px;
+        margin-bottom: 20px;
+        margin-left: 30px;
+        margin-top: 30px;
       }
+      input {
+        height: 25px;
+        width: 150px;
+        padding: 5px;
+        margin-bottom: 20px;
+      }
+	  select {
+        height: 40px;
+        width: 150px;
+        padding: 5px;
+        margin-bottom: 20px;
+	  }
+	  #exampleLink {
+        margin-left: 30px;
+	}
+      
     </style>
   </head>
   <body>
@@ -19,7 +38,7 @@
       <option value="false">No</option>
     </select>
     <br><br>
-    <a id="exampleLink" href="https://plus.anz/datain?success=true">https://plus.anz/datain?success=true</a>
+    <a id="exampleLink" href="https://plus.anz/datain">https://plus.anz/datain</a>
 
     <script>
       function updateLink() {
@@ -30,23 +49,24 @@
 
         // Update link with user input and success value
         var link = document.getElementById("exampleLink");
-        if (successValue === 'true') {
-          if (userInput) {
-            link.href = "https://plus.anz/datain?consent-id=" + userInput + "&success=" + successValue;
-            link.innerHTML = "https://plus.anz/datain?consent-id=" + userInput + "&success=" + successValue;
-          } else {
-            link.href = "https://plus.anz/datain?success=" + successValue;
-            link.innerHTML = "https://plus.anz/datain?success=" + successValue;
-          }
-        } else {
-          link.href = "https://plus.anz/datain?success=" + successValue;
-          link.innerHTML = "https://plus.anz/datain?success=" + successValue;
-        }
+        var url = "https://plus.anz/datain";
+        if (userInput && successValue === "true") {
+          url += "?consent-id=" + userInput + "&success=" + successValue;
+        } else if (successValue === "true") {
+          url += "?success=" + successValue;
+        } else if (successValue === "false") {
+          url += "?success=" + successValue;
+	  	}
+		
+        link.href = url;
+        link.innerHTML = url;
       }
 
-      // Add event listeners to update the link whenever the user makes a change
-      document.getElementById("userInput").addEventListener("input", updateLink);
-      document.getElementById("successSelect").addEventListener("change", updateLink);
+      // Add event listener to input and select elements
+      var userInput = document.getElementById("userInput");
+      var successSelect = document.getElementById("successSelect");
+      userInput.addEventListener("input", updateLink);
+      successSelect.addEventListener("change", updateLink);
     </script>
   </body>
 </html>
