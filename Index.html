@@ -52,12 +52,9 @@
         var url = "https://plus.anz/datain";
         if (userInput && successValue === "true") {
           url += "?consent-id=" + userInput + "&success=" + successValue;
-        } else if (successValue === "true") {
+        } else {
           url += "?success=" + successValue;
-        } else if (successValue === "false") {
-          url += "?success=" + successValue;
-	  	}
-		
+        } 
         link.href = url;
         link.innerHTML = url;
       }
