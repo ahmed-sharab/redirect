@@ -19,7 +19,7 @@
       <option value="false">No</option>
     </select>
     <br><br>
-    <a id="dataInLink" href="https://plus.anz/datain&success=true">https://plus.anz/datain&success=true</a>
+    <a id="exampleLink" href="https://plus.anz/datain">https://plus.anz/datain</a>
 
     <script>
       function updateLink() {
@@ -29,10 +29,15 @@
         var successValue = successSelect.options[successSelect.selectedIndex].value;
 
         // Update link with user input and success value
-        var link = document.getElementById("dataInLink");
-        if (userInput) {
-          link.href = "https://plus.anz/datain?consent-id=" + userInput + "&success=" + successValue;
-          link.innerHTML = "https://plus.anz/datain?consent-id=" + userInput + "&success=" + successValue;
+        var link = document.getElementById("exampleLink");
+        if (successValue === 'true') {
+          if (userInput) {
+            link.href = "https://plus.anz/datain?consent-id=" + userInput + "&success=" + successValue;
+            link.innerHTML = "https://plus.anz/datain?consent-id=" + userInput + "&success=" + successValue;
+          } else {
+            link.href = "https://plus.anz/datain?success=" + successValue;
+            link.innerHTML = "https://plus.anz/datain?success=" + successValue;
+          }
         } else {
           link.href = "https://plus.anz/datain?success=" + successValue;
           link.innerHTML = "https://plus.anz/datain?success=" + successValue;
