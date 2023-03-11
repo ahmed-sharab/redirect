@@ -2,6 +2,12 @@
 <html>
   <head>
     <title>redirect</title>
+    <style>
+      body {
+        padding-top: 20px;
+        padding-left: 20px;
+      }
+    </style>
   </head>
   <body>
     <label for="userInput">Enter consent ID</label>
@@ -13,9 +19,7 @@
       <option value="false">No</option>
     </select>
     <br><br>
-    <button onclick="updateLink()">Update Link</button>
-    <br><br>
-    <a id="exampleLink" href="https://plus.anz/datain">https://plus.anz/datain</a>
+    <a id="dataInLink" href="https://plus.anz/datain">https://plus.anz/datain</a>
 
     <script>
       function updateLink() {
@@ -25,10 +29,14 @@
         var successValue = successSelect.options[successSelect.selectedIndex].value;
 
         // Update link with user input and success value
-        var link = document.getElementById("exampleLink");
+        var link = document.getElementById("dataInLink");
         link.href = "https://plus.anz/datain?consent-id=" + userInput + "&success=" + successValue;
         link.innerHTML = "https://plus.anz/datain?consent-id=" + userInput + "&success=" + successValue;
       }
+
+      // Add event listeners to update the link whenever the user makes a change
+      document.getElementById("userInput").addEventListener("input", updateLink);
+      document.getElementById("successSelect").addEventListener("change", updateLink);
     </script>
   </body>
 </html>
