@@ -30,7 +30,7 @@
   </head>
   <body>
     <label for="userInput">Enter consent ID</label>
-    <input type="text" id="userInput" name="userInput">
+    <input type="text" id="userInput" name="userInput" value="12345">
     <br><br>
     <label for="successSelect">Did it succeed?</label>
     <select id="successSelect" name="successSelect">
@@ -38,7 +38,7 @@
       <option value="false">No</option>
     </select>
     <br><br>
-    <a id="exampleLink" href="https://plus.anz/datain?success=true">https://plus.anz/datain?success=true</a>
+    <a id="exampleLink" href="https://plus.anz/datain?success=true&consent_id=12345">https://plus.anz/datain?success=true&consent_id=12345</a>
 
     <script>
       function updateLink() {
@@ -51,7 +51,7 @@
         var link = document.getElementById("exampleLink");
         var url = "https://plus.anz/datain";
         if (userInput && successValue === "true") {
-          url += "?consent_id=" + userInput + "&success=" + successValue;
+          url += "?success=" + successValue + "&consent_id=" + userInput
         } else {
           url += "?success=" + successValue;
         } 
